@@ -11,7 +11,7 @@ module.exports = function (app){
 
         res.json(JSON.parse(data));
     })
-    app.post('/api/notes', (req, res) => {
+    app.post('./assets/db/db.json', (req, res) => {
         const newNote = {
             ...req.body,
             id: uniqid(),
@@ -37,6 +37,8 @@ module.exports = function (app){
     console.log('done', text)
     res.json(data);
 });
+
+    // deleting
     app.delete('./notes/:id', (req,res) => {
         let data = fs.readFileSync('assets/db/db.json', 'utf8');
 
