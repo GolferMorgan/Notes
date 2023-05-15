@@ -4,14 +4,14 @@ var uniqid = require('uniqid');
 
 // routing
 module.exports = function (app){
-    app.get('./notes', (req, res) => {
+    app.get('/api/notes', (req, res) => {
         console.log('notes app working');
 
         let data = fs.readFileSync('./assets/db/db.json', 'utf8')
 
         res.json(JSON.parse(data));
     })
-    app.post('./assets/db/db.json', (req, res) => {
+    app.post('/api/notes', (req, res) => {
         const newNote = {
             ...req.body,
             id: uniqid(),
@@ -39,7 +39,7 @@ module.exports = function (app){
 });
 
     // deleting
-    app.delete('./notes/:id', (req,res) => {
+    app.delete('/api/notes/:id', (req,res) => {
         let data = fs.readFileSync('assets/db/db.json', 'utf8');
 
         const dataJSON = JSON.parse(data);
