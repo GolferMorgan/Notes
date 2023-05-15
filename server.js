@@ -20,10 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // telling html to look in assets folder
-app.use(express.static(path.join(__dirname + './assets/db' )));
+app.use(express.static('public'));
 
-require('./assets/routing/api-routes.js')(app);
-require('./assets/routing/html-routes.js')(app);
+require('./routing/api-routing.js')(app);
+require('./routing/html-routing.js')(app);
 
 app.listen(PORT, function(){
     console.log('listening on 3001')
